@@ -6,7 +6,7 @@ export const personalInfo = {
   phone: "+91 8438807386",
   location: "Chennai, TN, India",
   linkedin: "https://www.linkedin.com/in/ali-akram-2729ba282/",
-  github: "https://github.com/aliakram",
+  github: "https://github.com/Akram-00",
   portfolio: "#",
   resumeUrl: "#",
   avatar: "/Screenshot 2026-06-24 172126.png",

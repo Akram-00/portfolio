@@ -1,18 +1,50 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { skills, techStack } from "@/data/portfolio";
 import { fadeUp, staggerContainer, staggerFast, scaleIn, viewportOptions } from "@/utils/animations";
 
 export function SkillsSection() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
+  const isTechInActiveCategory = (techName: string) => {
+    if (!activeCategory) return true;
+    const group = skills.find((s) => s.category === activeCategory);
+    if (!group) return false;
+    return group.items.some(
+      (item) =>
+        item.toLowerCase().includes(techName.toLowerCase()) ||
+        techName.toLowerCase().includes(item.toLowerCase())
+    );
+  };
+
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouse = (e: MouseEvent) => {
+      setMousePos({
+        x: (e.clientX / window.innerWidth - 0.5) * 20,
+        y: (e.clientY / window.innerHeight - 0.5) * 20,
+      });
+    };
+    window.addEventListener("mousemove", handleMouse);
+    return () => window.removeEventListener("mousemove", handleMouse);
+  }, []);
+
   return (
     <section
       id="skills"
-      className="section-padding"
+      className="section-padding relative overflow-hidden"
       style={{ backgroundColor: "var(--primary-color)" }}
     >
+      {/* Cinematic Grid Overlay with Mouse Parallax */}
+      <motion.div
+        className="cinematic-grid"
+        style={{
+          x: mousePos.x * 0.25,
+          y: mousePos.y * 0.25,
+        }}
+      />
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           variants={staggerContainer}
@@ -97,49 +129,58 @@ export function SkillsSection() {
               whileInView="visible"
               viewport={viewportOptions}
             >
-              {techStack.map((tech, i) => (
-                <motion.div
-                  key={tech.name}
-                  variants={{
-                    hidden: { opacity: 0, scale: 0.8 },
-                    visible: { opacity: 1, scale: 1 },
-                  }}
-                  whileHover={{
-                    scale: 1.12,
-                    y: -4,
-                    transition: { duration: 0.2 },
-                  }}
-                  animate={{
-                    y: [0, Math.sin(i * 0.8) * 6, 0],
-                  }}
-                  transition={{
-                    y: {
-                      duration: 3 + (i % 3),
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: i * 0.1,
-                    },
-                  }}
-                  className="cursor-default"
-                >
-                  <div
-                    className="px-4 py-2 rounded-full text-sm font-mono glass transition-all duration-300 hover:border-[var(--secondary-color)] hover:shadow-[0_0_12px_rgba(211,175,55,0.2)]"
-                    style={{
-                      color:
-                        i % 4 === 0
-                          ? "var(--secondary-color)"
-                          : "var(--third-color)",
-                      opacity: i % 4 === 0 ? 1 : 0.85,
-                      border: i % 4 === 0
-                        ? "1px solid var(--secondary-color)"
-                        : "1px solid var(--border-color)",
-                      fontSize: i % 5 === 0 ? "0.9rem" : "0.75rem",
+              {techStack.map((tech, i) => {
+                const isHighlighted = isTechInActiveCategory(tech.name);
+                return (
+                  <motion.div
+                    key={tech.name}
+                    variants={{
+                      hidden: { opacity: 0, scale: 0.8 },
+                      visible: { opacity: 1, scale: 1 },
                     }}
+                    whileHover={{
+                      scale: 1.15,
+                      y: -5,
+                      transition: { duration: 0.2 },
+                    }}
+                    animate={{
+                      y: [0, Math.sin(i * 0.8) * 6, 0],
+                      opacity: activeCategory ? (isHighlighted ? 1 : 0.25) : 1,
+                      scale: activeCategory ? (isHighlighted ? 1.08 : 0.9) : 1,
+                    }}
+                    transition={{
+                      y: {
+                        duration: 3 + (i % 3),
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: i * 0.1,
+                      },
+                      opacity: { duration: 0.3 },
+                      scale: { duration: 0.3 }
+                    }}
+                    className="cursor-default"
                   >
-                    {tech.name}
-                  </div>
-                </motion.div>
-              ))}
+                    <div
+                      className="px-4 py-2 rounded-full text-sm font-mono glass transition-all duration-300 hover:border-[var(--secondary-color)] hover:shadow-[0_0_12px_rgba(211,175,55,0.3)]"
+                      style={{
+                        color: activeCategory
+                          ? (isHighlighted ? "var(--secondary-color)" : "var(--third-color)")
+                          : (i % 4 === 0 ? "var(--secondary-color)" : "var(--third-color)"),
+                        opacity: activeCategory ? (isHighlighted ? 1 : 0.6) : (i % 4 === 0 ? 1 : 0.85),
+                        border: activeCategory
+                          ? (isHighlighted ? "1px solid var(--secondary-color)" : "1px solid var(--border-color)")
+                          : (i % 4 === 0 ? "1px solid var(--secondary-color)" : "1px solid var(--border-color)"),
+                        boxShadow: activeCategory && isHighlighted
+                          ? "0 0 15px rgba(211,175,55,0.4)"
+                          : undefined,
+                        fontSize: i % 5 === 0 ? "0.9rem" : "0.75rem",
+                      }}
+                    >
+                      {tech.name}
+                    </div>
+                  </motion.div>
+                );
+              })}
             </motion.div>
           </motion.div>
         </motion.div>

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
+import { ScrollToTopButton } from "@/components/layout/ScrollToTopButton";
+import { ScrollProgressBar } from "@/components/layout/ScrollProgressBar";
 
 export const metadata: Metadata = {
   title: "Ali Akram — Full Stack Developer",
@@ -44,7 +46,9 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <ScrollProgressBar />
         {children}
+        <ScrollToTopButton />
         <WhatsAppButton />
       </body>
     </html>

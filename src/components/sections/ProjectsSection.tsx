@@ -1,6 +1,6 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { projects } from "@/data/portfolio";
 import { fadeUp, staggerContainer, viewportOptions } from "@/utils/animations";
 
@@ -8,12 +8,33 @@ export function ProjectsSection() {
   const [selected, setSelected] = useState<string | null>(null);
   const selectedProject = projects.find((p) => p.id === selected);
 
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouse = (e: MouseEvent) => {
+      setMousePos({
+        x: (e.clientX / window.innerWidth - 0.5) * 20,
+        y: (e.clientY / window.innerHeight - 0.5) * 20,
+      });
+    };
+    window.addEventListener("mousemove", handleMouse);
+    return () => window.removeEventListener("mousemove", handleMouse);
+  }, []);
+
   return (
     <section
       id="projects"
-      className="section-padding"
+      className="section-padding relative overflow-hidden"
       style={{ backgroundColor: "var(--primary-color)" }}
     >
+      {/* Cinematic Grid Overlay with Mouse Parallax */}
+      <motion.div
+        className="cinematic-grid"
+        style={{
+          x: mousePos.x * 0.25,
+          y: mousePos.y * 0.25,
+        }}
+      />
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           variants={staggerContainer}
@@ -42,10 +63,15 @@ export function ProjectsSection() {
                 key={project.id}
                 variants={fadeUp}
                 custom={i}
-                className="group cursor-pointer glass rounded-2xl overflow-hidden"
-                whileHover={{ y: -6, boxShadow: "0 20px 60px rgba(211,175,55,0.15)" }}
+                className="group cursor-pointer glass rounded-2xl overflow-hidden transition-all duration-300"
+                whileHover={{ 
+                  y: -8, 
+                  scale: 1.02,
+                  borderColor: "rgba(211,175,55,0.4)",
+                  boxShadow: "0 20px 40px rgba(211,175,55,0.15), 0 0 0 1px rgba(211,175,55,0.35)"
+                }}
                 onClick={() => setSelected(project.id)}
-                style={{ border: "1px solid rgba(211,175,55,0.1)" }}
+                style={{ border: "1px solid var(--border-color)" }}
               >
                 {/* Card header */}
                 <div

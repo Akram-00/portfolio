@@ -53,8 +53,14 @@ export function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{ backgroundColor: "var(--primary-color)" }}
     >
-      {/* Cinematic Grid Overlay */}
-      <div className="cinematic-grid" />
+      {/* Cinematic Grid Overlay with Mouse Parallax */}
+      <motion.div 
+        className="cinematic-grid" 
+        style={{
+          x: mousePos.x * 0.3,
+          y: mousePos.y * 0.3,
+        }}
+      />
 
       {/* Left side glowing orb (Purple/Indigo) */}
       <motion.div
