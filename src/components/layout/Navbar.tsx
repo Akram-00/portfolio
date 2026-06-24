@@ -110,6 +110,8 @@ export function Navbar() {
 
           <a
             href={personalInfo.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium transition-all duration-300"
             style={{
               border: "1px solid var(--secondary-color)",

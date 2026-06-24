@@ -8,7 +8,7 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/ali-akram-2729ba282/",
   github: "https://github.com/Akram-00",
   portfolio: "#",
-  resumeUrl: "#",
+  resumeUrl: "/ALI%20AKRAM%20RESUME.pdf",
   avatar: "/Screenshot 2026-06-24 172126.png",
   bio: "Full Stack Developer with experience building business applications, client portals, workflow automation systems, and internal management platforms. Skilled in developing scalable frontend and backend solutions, integrating third-party services, and delivering end-to-end features from requirements gathering to deployment.",
   stats: [
