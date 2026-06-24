@@ -29,7 +29,7 @@ function StatCard({ value, suffix, label }: { value: number; suffix: string; lab
 
 export function AboutSection() {
   return (
-    <section id="about" className="section-padding" style={{ backgroundColor: "var(--primary-color)" }}>
+    <section id="about" className="section-padding" style={{ backgroundColor: "var(--primary-alt)" }}>
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           variants={staggerContainer}

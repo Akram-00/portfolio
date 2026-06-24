@@ -119,7 +119,7 @@ export function ContactSection() {
     <section
       id="contact"
       className="section-padding"
-      style={{ backgroundColor: "var(--primary-color)" }}
+      style={{ backgroundColor: "var(--primary-alt)" }}
     >
       <div className="max-w-7xl mx-auto px-6">
         <motion.div

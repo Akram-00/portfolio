@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { skills, techStack } from "@/data/portfolio";
 import { fadeUp, staggerContainer, staggerFast, scaleIn, viewportOptions } from "@/utils/animations";
 
@@ -18,19 +18,6 @@ export function SkillsSection() {
     );
   };
 
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouse = (e: MouseEvent) => {
-      setMousePos({
-        x: (e.clientX / window.innerWidth - 0.5) * 20,
-        y: (e.clientY / window.innerHeight - 0.5) * 20,
-      });
-    };
-    window.addEventListener("mousemove", handleMouse);
-    return () => window.removeEventListener("mousemove", handleMouse);
-  }, []);
-
   return (
     <section
       id="skills"
@@ -38,11 +25,11 @@ export function SkillsSection() {
       style={{ backgroundColor: "var(--primary-color)" }}
     >
       {/* Cinematic Grid Overlay with Mouse Parallax */}
-      <motion.div
+      <div
         className="cinematic-grid"
         style={{
-          x: mousePos.x * 0.25,
-          y: mousePos.y * 0.25,
+          transform: "translate3d(calc(var(--mouse-x) * 0.35), calc(var(--mouse-y) * 0.35), 0)",
+          transition: "transform 0.2s cubic-bezier(0.25, 1, 0.5, 1)"
         }}
       />
       <div className="max-w-7xl mx-auto px-6">

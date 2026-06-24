@@ -26,24 +26,12 @@ export function HeroSection() {
   const y = useTransform(scrollYProgress, [0, 1], [0, -150]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const [titleIndex, setTitleIndex] = useState(0);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const interval = setInterval(() => {
       setTitleIndex((i) => (i + 1) % rotatingTitles.length);
     }, 2500);
     return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    const handleMouse = (e: MouseEvent) => {
-      setMousePos({
-        x: (e.clientX / window.innerWidth - 0.5) * 30,
-        y: (e.clientY / window.innerHeight - 0.5) * 30,
-      });
-    };
-    window.addEventListener("mousemove", handleMouse);
-    return () => window.removeEventListener("mousemove", handleMouse);
   }, []);
 
   return (
@@ -54,11 +42,11 @@ export function HeroSection() {
       style={{ backgroundColor: "var(--primary-color)" }}
     >
       {/* Cinematic Grid Overlay with Mouse Parallax */}
-      <motion.div 
+      <div 
         className="cinematic-grid" 
         style={{
-          x: mousePos.x * 0.3,
-          y: mousePos.y * 0.3,
+          transform: "translate3d(calc(var(--mouse-x) * 0.45), calc(var(--mouse-y) * 0.45), 0)",
+          transition: "transform 0.2s cubic-bezier(0.25, 1, 0.5, 1)"
         }}
       />
 
@@ -69,8 +57,8 @@ export function HeroSection() {
           backgroundColor: "var(--left-color)",
           top: "-15%",
           left: "-10%",
-          x: mousePos.x * 1.2,
-          y: mousePos.y * 1.2,
+          transform: "translate3d(calc(var(--mouse-x) * 1.8), calc(var(--mouse-y) * 1.8), 0)",
+          transition: "transform 0.3s cubic-bezier(0.25, 1, 0.5, 1)"
         }}
         animate={{ scale: [1, 1.15, 1] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
@@ -83,8 +71,8 @@ export function HeroSection() {
           backgroundColor: "var(--right-color)",
           bottom: "-15%",
           right: "-10%",
-          x: -mousePos.x * 1.2,
-          y: -mousePos.y * 1.2,
+          transform: "translate3d(calc(var(--mouse-x) * -1.8), calc(var(--mouse-y) * -1.8), 0)",
+          transition: "transform 0.3s cubic-bezier(0.25, 1, 0.5, 1)"
         }}
         animate={{ scale: [1.1, 0.95, 1.1] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
@@ -101,10 +89,10 @@ export function HeroSection() {
           className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
         >
           {/* Left content */}
-          <motion.div
+          <div
             style={{
-              x: mousePos.x * 0.2,
-              y: mousePos.y * 0.2,
+              transform: "translate3d(calc(var(--mouse-x) * 0.3), calc(var(--mouse-y) * 0.3), 0)",
+              transition: "transform 0.25s cubic-bezier(0.25, 1, 0.5, 1)"
             }}
           >
             <motion.div variants={fadeUp} className="flex items-center gap-3 mb-6">
@@ -229,15 +217,15 @@ export function HeroSection() {
                 {personalInfo.location}
               </span>
             </motion.div>
-          </motion.div>
+          </div>
 
           {/* Right - Avatar & floating elements */}
           <motion.div
             variants={fadeUp}
             className="relative flex items-center justify-center"
             style={{
-              x: -mousePos.x * 0.2,
-              y: -mousePos.y * 0.2,
+              transform: "translate3d(calc(var(--mouse-x) * -0.3), calc(var(--mouse-y) * -0.3), 0)",
+              transition: "transform 0.25s cubic-bezier(0.25, 1, 0.5, 1)"
             }}
           >
             <div className="relative">

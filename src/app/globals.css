@@ -5,6 +5,7 @@
   
   /* Light mode (default) colors */
   --primary-color: #FAF9F6;
+  --primary-alt: #F4F2EC; /* Alternating warm off-white background */
   --third-color: #121214;
   --text-muted: rgba(18, 18, 20, 0.6);
   --border-color: rgba(211, 175, 55, 0.15);
@@ -17,12 +18,17 @@
   --right-color: #5C5C66;
   --left-glow: rgba(211, 175, 55, 0.08);
   --right-glow: rgba(92, 92, 102, 0.08);
+  
+  /* Mouse position fallbacks */
+  --mouse-x: 0px;
+  --mouse-y: 0px;
 }
 
 
 
 html.dark {
   --primary-color: #0A0A0F;
+  --primary-alt: #101017; /* Alternating deep dark background */
   --third-color: #E8E6FF;
   --text-muted: rgba(232, 230, 255, 0.6);
   --border-color: rgba(211, 175, 55, 0.2);

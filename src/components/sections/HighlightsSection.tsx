@@ -34,8 +34,8 @@ export function HighlightsSection() {
     <section
       className="section-padding"
       style={{
-        backgroundColor: "var(--primary-color)",
-        background: "linear-gradient(180deg, var(--primary-color) 0%, rgba(211,175,55,0.04) 50%, var(--primary-color) 100%)",
+        backgroundColor: "var(--primary-alt)",
+        background: "linear-gradient(180deg, var(--primary-alt) 0%, rgba(211,175,55,0.04) 50%, var(--primary-alt) 100%)",
       }}
     >
       <div className="max-w-7xl mx-auto px-6">

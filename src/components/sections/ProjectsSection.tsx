@@ -1,6 +1,6 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { projects } from "@/data/portfolio";
 import { fadeUp, staggerContainer, viewportOptions } from "@/utils/animations";
 
@@ -8,31 +8,18 @@ export function ProjectsSection() {
   const [selected, setSelected] = useState<string | null>(null);
   const selectedProject = projects.find((p) => p.id === selected);
 
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouse = (e: MouseEvent) => {
-      setMousePos({
-        x: (e.clientX / window.innerWidth - 0.5) * 20,
-        y: (e.clientY / window.innerHeight - 0.5) * 20,
-      });
-    };
-    window.addEventListener("mousemove", handleMouse);
-    return () => window.removeEventListener("mousemove", handleMouse);
-  }, []);
-
   return (
     <section
       id="projects"
       className="section-padding relative overflow-hidden"
-      style={{ backgroundColor: "var(--primary-color)" }}
+      style={{ backgroundColor: "var(--primary-alt)" }}
     >
       {/* Cinematic Grid Overlay with Mouse Parallax */}
-      <motion.div
+      <div
         className="cinematic-grid"
         style={{
-          x: mousePos.x * 0.25,
-          y: mousePos.y * 0.25,
+          transform: "translate3d(calc(var(--mouse-x) * 0.35), calc(var(--mouse-y) * 0.35), 0)",
+          transition: "transform 0.2s cubic-bezier(0.25, 1, 0.5, 1)"
         }}
       />
       <div className="max-w-7xl mx-auto px-6">
