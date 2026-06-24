@@ -1,0 +1,238 @@
+export const personalInfo = {
+  name: "Ali Akram",
+  title: "Full Stack Developer",
+  tagline: "Building Digital Experiences",
+  email: "aliakram9789@gmail.com",
+  phone: "+91 8438807386",
+  location: "Chennai, TN, India",
+  linkedin: "https://www.linkedin.com/in/ali-akram-2729ba282/",
+  github: "https://github.com/aliakram",
+  portfolio: "#",
+  resumeUrl: "#",
+  avatar: "/Screenshot 2026-06-24 172126.png",
+  bio: "Full Stack Developer with experience building business applications, client portals, workflow automation systems, and internal management platforms. Skilled in developing scalable frontend and backend solutions, integrating third-party services, and delivering end-to-end features from requirements gathering to deployment.",
+  stats: [
+    { label: "Years Experience", value: 2, suffix: "+" },
+    { label: "Projects Delivered", value: 15, suffix: "+" },
+    { label: "Technologies", value: 20, suffix: "+" },
+    { label: "Happy Clients", value: 10, suffix: "+" },
+  ],
+};
+
+export const experiences = [
+  {
+    id: "a4-services",
+    company: "A4 Services",
+    location: "San Ġwann, Malta",
+    role: "Lead Full Stack Engineer",
+    type: "Remote",
+    period: "Nov 2025 – Present",
+    current: true,
+    highlights: [
+      "Led architecture and delivery of multiple business platforms with technical planning and engineering best practices",
+      "Directed VACEI — a multi-service provider platform with Client, Admin, and Service Provider portals",
+      "Led A4 Audit transition, an auditing and compliance management platform",
+      "Oversaw SheetsWay and SheetsWay Marketplace development and architecture decisions",
+      "Managed sprint planning, task allocation, technical reviews, and stakeholder communication",
+    ],
+  },
+  {
+    id: "pixel-panda",
+    company: "Pixel Panda",
+    location: "Dubai, UAE",
+    role: "Full Stack Developer",
+    type: "Remote",
+    period: "Feb 2025 – Nov 2025",
+    current: false,
+    highlights: [
+      "Primary technical contributor for application development, infrastructure management, and production support",
+      "Delivered Al Ghwasa, Space Sculpt, UAE LED Workspace, Pop & Palm, Pixel World, and HQ Real Estate",
+      "Managed end-to-end deployments, hosting, DNS configuration, SSL certificates, and production releases",
+      "Configured business email infrastructure, domain records, hosting, and third-party integrations",
+    ],
+  },
+  {
+    id: "nous-infotech",
+    company: "Nous Infotech",
+    location: "Chennai, India",
+    role: "Full Stack Developer",
+    type: "Remote",
+    period: "Mar 2024 – Feb 2025",
+    current: false,
+    highlights: [
+      "Developed full-stack apps across healthcare, e-commerce, food services, and corporate domains",
+      "Contributed to KindRice e-commerce platform with payment gateway integration and business workflows",
+      "Developed and enhanced Prepco Healthcare modules, improving UX, responsiveness, and functionality",
+      "Managed deployments, domain configurations, SSL setup, and production support for multiple client projects",
+    ],
+  },
+];
+
+export const projects = [
+  {
+    id: "vacei",
+    title: "VACEI",
+    subtitle: "Multi-Financial-Service Platform",
+    description: "A comprehensive multi-portal platform serving clients, administrators, and service providers in the financial services domain.",
+    problem: "Financial service businesses needed a unified platform to manage multiple service providers, clients, and administrators with complex workflows.",
+    solution: "Built a scalable multi-portal architecture with distinct client, admin, and service provider interfaces with role-based access and document management.",
+    technologies: ["React.js", "Next.js", "Node.js", "Express.js", "PostgreSQL", "TypeScript"],
+    responsibilities: [
+      "Transformed business requirements into scalable multi-portal architecture",
+      "Designed core workflows including Request-to-Proposal management",
+      "Implemented company structure management and document request processing",
+      "Re-architected document management workflows for long-term scalability",
+    ],
+    outcomes: ["Streamlined multi-party financial workflows", "Scalable document management system", "Improved maintainability"],
+    category: "Platform",
+    featured: true,
+  },
+  {
+    id: "vaazhgha",
+    title: "VaazhghaValmudan",
+    subtitle: "Multi-Agent Real Estate Listing Platform",
+    description: "A real estate platform with administrative dashboard supporting customer management and business operations at scale.",
+    problem: "Real estate agents needed a centralized platform to manage listings, customers, and operations with reliable infrastructure.",
+    solution: "Built a Next.js-powered platform with NestJS backend, PostgreSQL database, and Docker-based AWS EC2 deployment for high availability.",
+    technologies: ["Next.js", "NestJS", "PostgreSQL", "TypeScript", "AWS EC2", "Docker"],
+    responsibilities: [
+      "Developed platform and administrative dashboard for customer management",
+      "Managed AWS EC2 infrastructure, Linux environments, and Docker deployments",
+      "Investigated and resolved critical production integration issues",
+    ],
+    outcomes: ["Production-ready real estate platform", "Scalable cloud infrastructure", "Reliable deployment pipeline"],
+    category: "Real Estate",
+    featured: true,
+  },
+  {
+    id: "kindrice",
+    title: "KindRice",
+    subtitle: "Full Stack E-Commerce Application",
+    description: "A production-grade e-commerce platform with integrated logistics, payment processing, and intelligent package optimization.",
+    problem: "An e-commerce business needed seamless payment processing, logistics integration, and smart packaging to reduce shipping costs.",
+    solution: "Integrated Shiprocket logistics, payment gateway, and custom package optimization logic based on product weight combinations.",
+    technologies: ["React.js", "Node.js", "Express.js", "PostgreSQL", "JavaScript"],
+    responsibilities: [
+      "Integrated payment gateway and business workflows for order processing",
+      "Implemented Shiprocket logistics integration",
+      "Developed custom package optimization logic based on product weight",
+      "Collaborated with stakeholders to define packaging and shipping standards",
+    ],
+    outcomes: ["Improved logistics efficiency", "Reduced shipping costs", "Streamlined order fulfillment"],
+    category: "E-Commerce",
+    featured: true,
+  },
+  {
+    id: "lastbite",
+    title: "LastBite",
+    subtitle: "Mobile Application Backend & Admin Panel",
+    description: "Backend services and admin panel for a food ordering mobile application with complete order lifecycle management.",
+    problem: "A food delivery startup needed a robust backend to power their mobile app with real-time order management and payment processing.",
+    solution: "Designed comprehensive backend services with APIs, database models, authentication, and admin panel for complete operational control.",
+    technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "TypeScript"],
+    responsibilities: [
+      "Designed backend services for food ordering, user management, and order processing",
+      "Built APIs and database models for customer-facing and admin functionality",
+      "Developed authentication, profile management, and payment workflows",
+      "Contributed across development, maintenance, deployment, and production support",
+    ],
+    outcomes: ["Scalable food delivery backend", "Comprehensive admin control panel", "Robust payment integration"],
+    category: "Food Tech",
+    featured: false,
+  },
+];
+
+export const skills = [
+  {
+    category: "Frontend",
+    icon: "🎨",
+    items: ["React.js", "Next.js", "JavaScript", "TypeScript", "HTML5", "CSS3", "Tailwind CSS"],
+  },
+  {
+    category: "Backend",
+    icon: "⚙️",
+    items: ["Node.js", "Express.js", "NestJS", "REST APIs"],
+  },
+  {
+    category: "Databases & ORM",
+    icon: "🗄️",
+    items: ["MongoDB", "PostgreSQL", "Prisma", "Supabase"],
+  },
+  {
+    category: "Auth & Security",
+    icon: "🔐",
+    items: ["JWT Authentication", "Google OAuth", "Firebase Auth", "RBAC"],
+  },
+  {
+    category: "State & Data",
+    icon: "📊",
+    items: ["TanStack Query", "Context API"],
+  },
+  {
+    category: "Cloud & DevOps",
+    icon: "☁️",
+    items: ["AWS EC2", "Docker", "Vercel", "Render", "Linux", "DNS Management", "SSL"],
+  },
+  {
+    category: "Tools & Platforms",
+    icon: "🛠️",
+    items: ["Git", "GitHub", "Postman", "Firebase", "Swagger API"],
+  },
+  {
+    category: "Integrations",
+    icon: "🔗",
+    items: ["Payment Gateway", "Third-Party APIs", "Email Services", "Shiprocket"],
+  },
+];
+
+export const services = [
+  {
+    icon: "🚀",
+    title: "Full Stack Development",
+    description: "End-to-end web application development from architecture design to production deployment using modern technologies.",
+  },
+  {
+    icon: "🏗️",
+    title: "Application Architecture",
+    description: "Designing scalable, maintainable application architectures for business-critical platforms and multi-tenant systems.",
+  },
+  {
+    icon: "🔧",
+    title: "API Development",
+    description: "Building robust REST APIs with proper authentication, authorization, documentation, and third-party integrations.",
+  },
+  {
+    icon: "☁️",
+    title: "Cloud & DevOps",
+    description: "Infrastructure management, Docker deployments, AWS EC2 setup, domain configuration, and SSL certificate management.",
+  },
+  {
+    icon: "📱",
+    title: "Responsive UI Development",
+    description: "Crafting pixel-perfect, fully responsive interfaces with modern design systems and exceptional user experiences.",
+  },
+  {
+    icon: "🔌",
+    title: "Third-Party Integrations",
+    description: "Seamless integration of payment gateways, logistics providers, email services, and external APIs into your platform.",
+  },
+];
+
+export const techStack = [
+  { name: "React", category: "Frontend" },
+  { name: "Next.js", category: "Frontend" },
+  { name: "TypeScript", category: "Language" },
+  { name: "Node.js", category: "Backend" },
+  { name: "NestJS", category: "Backend" },
+  { name: "Express", category: "Backend" },
+  { name: "PostgreSQL", category: "Database" },
+  { name: "MongoDB", category: "Database" },
+  { name: "Prisma", category: "ORM" },
+  { name: "Docker", category: "DevOps" },
+  { name: "AWS EC2", category: "Cloud" },
+  { name: "Tailwind", category: "Frontend" },
+  { name: "Supabase", category: "Database" },
+  { name: "Firebase", category: "Platform" },
+  { name: "Git", category: "Tool" },
+  { name: "Vercel", category: "Cloud" },
+];
