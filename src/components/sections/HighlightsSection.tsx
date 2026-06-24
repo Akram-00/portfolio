@@ -35,7 +35,7 @@ export function HighlightsSection() {
       className="section-padding"
       style={{
         backgroundColor: "var(--primary-color)",
-        background: "linear-gradient(180deg, var(--primary-color) 0%, rgba(108,99,255,0.04) 50%, var(--primary-color) 100%)",
+        background: "linear-gradient(180deg, var(--primary-color) 0%, rgba(211,175,55,0.04) 50%, var(--primary-color) 100%)",
       }}
     >
       <div className="max-w-7xl mx-auto px-6">
@@ -67,16 +67,16 @@ export function HighlightsSection() {
                 variants={fadeUp}
                 custom={i}
                 className="glass rounded-2xl p-6 flex gap-5 group"
-                style={{ border: "1px solid rgba(108,99,255,0.08)" }}
+                style={{ border: "1px solid rgba(211,175,55,0.08)" }}
                 whileHover={{
-                  borderColor: "rgba(108,99,255,0.25)",
+                  borderColor: "rgba(211,175,55,0.25)",
                   y: -4,
                 }}
               >
                 <div className="shrink-0">
                   <div
                     className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl"
-                    style={{ backgroundColor: "rgba(108,99,255,0.12)" }}
+                    style={{ backgroundColor: "rgba(211,175,55,0.12)" }}
                   >
                     {item.icon}
                   </div>

@@ -121,7 +121,7 @@ export function HeroSection() {
               variants={fadeUp}
               className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6"
             >
-              <span className="text-white">Hi, I&apos;m{" "}</span>
+              <span>Hi, I&apos;m{" "}</span>
               <span className="shimmer-text">{personalInfo.name}</span>
             </motion.h1>
 
@@ -153,7 +153,7 @@ export function HeroSection() {
             {/* Stats row */}
             <motion.div variants={fadeUp} className="grid grid-cols-4 gap-4 mb-8">
               {personalInfo.stats.map((stat, i) => (
-                <div key={i} className="text-left border-l border-white/10 pl-4">
+                <div key={i} className="text-left border-l border-[var(--border-color)] pl-4">
                   <div
                     className="text-2xl md:text-3xl font-bold font-mono tracking-tighter"
                     style={{ color: "var(--left-color)" }}
@@ -174,7 +174,7 @@ export function HeroSection() {
             <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-5 mb-8">
               <motion.a
                 href="#projects"
-                className="px-8 py-3.5 rounded-full font-semibold text-sm transition-all duration-300 btn-purple-glow"
+                className="px-8 py-3.5 rounded-full font-semibold text-sm transition-all duration-300 btn-gold-glow"
                 style={{
                   backgroundColor: "var(--left-color)",
                   color: "var(--primary-color)",
@@ -186,7 +186,7 @@ export function HeroSection() {
               </motion.a>
               <motion.a
                 href="#contact"
-                className="px-8 py-3.5 rounded-full font-semibold text-sm transition-all duration-300 btn-cyan-glow bg-transparent"
+                className="px-8 py-3.5 rounded-full font-semibold text-sm transition-all duration-300 btn-silver-glow bg-transparent"
                 style={{
                   border: "1px solid var(--right-color)",
                   color: "var(--right-color)",
@@ -273,7 +273,7 @@ export function HeroSection() {
               <motion.div
                 className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden"
                 style={{
-                  border: "2px solid rgba(255, 255, 255, 0.15)",
+                  border: "2px solid var(--border-color)",
                   boxShadow: "0 0 40px rgba(0, 0, 0, 0.6)",
                 }}
                 animate={{ y: [0, -10, 0] }}
@@ -298,7 +298,7 @@ export function HeroSection() {
               ].map((badge, i) => (
                 <motion.div
                   key={i}
-                  className={`absolute ${badge.pos} ${badge.type === "left" ? "glass-card-purple" : "glass-card-cyan"} px-4 py-2 rounded-full text-xs font-mono whitespace-nowrap flex items-center gap-2`}
+                  className={`absolute ${badge.pos} ${badge.type === "left" ? "glass-card-gold" : "glass-card-silver"} px-4 py-2 rounded-full text-xs font-mono whitespace-nowrap flex items-center gap-2`}
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{
                     opacity: 1,
@@ -318,7 +318,7 @@ export function HeroSection() {
                       boxShadow: badge.type === "left" ? "0 0 8px var(--left-color)" : "0 0 8px var(--right-color)",
                     }}
                   />
-                  <span className="text-white font-medium">{badge.label}</span>
+                  <span className="font-medium" style={{ color: "var(--third-color)" }}>{badge.label}</span>
                 </motion.div>
               ))}
             </div>

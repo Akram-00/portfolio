@@ -46,7 +46,7 @@ export function SkillsSection() {
                 style={{
                   border: activeCategory === skillGroup.category
                     ? "1px solid var(--secondary-color)"
-                    : "1px solid rgba(108,99,255,0.1)",
+                    : "1px solid rgba(211,175,55,0.1)",
                 }}
                 whileHover={{ y: -4, scale: 1.02 }}
                 onClick={() =>
@@ -66,10 +66,12 @@ export function SkillsSection() {
                   {skillGroup.items.map((item) => (
                     <span
                       key={item}
-                      className="text-xs px-2 py-0.5 rounded-md font-mono"
+                      className="text-xs px-2 py-0.5 rounded-md font-mono transition-all duration-300"
                       style={{
-                        backgroundColor: "rgba(108,99,255,0.1)",
-                        color: "rgba(232,230,255,0.6)",
+                        backgroundColor: "rgba(211,175,55,0.06)",
+                        color: "var(--third-color)",
+                        opacity: 0.8,
+                        border: "1px solid var(--border-color)",
                       }}
                     >
                       {item}
@@ -121,15 +123,16 @@ export function SkillsSection() {
                   className="cursor-default"
                 >
                   <div
-                    className="px-4 py-2 rounded-full text-sm font-mono glass"
+                    className="px-4 py-2 rounded-full text-sm font-mono glass transition-all duration-300 hover:border-[var(--secondary-color)] hover:shadow-[0_0_12px_rgba(211,175,55,0.2)]"
                     style={{
                       color:
                         i % 4 === 0
                           ? "var(--secondary-color)"
-                          : "rgba(232,230,255,0.6)",
+                          : "var(--third-color)",
+                      opacity: i % 4 === 0 ? 1 : 0.85,
                       border: i % 4 === 0
-                        ? "1px solid rgba(108,99,255,0.3)"
-                        : "1px solid rgba(108,99,255,0.1)",
+                        ? "1px solid var(--secondary-color)"
+                        : "1px solid var(--border-color)",
                       fontSize: i % 5 === 0 ? "0.9rem" : "0.75rem",
                     }}
                   >

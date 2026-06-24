@@ -39,11 +39,11 @@ export function ServicesSection() {
                 variants={fadeUp}
                 custom={i}
                 className="group glass rounded-2xl p-6 transition-all duration-500"
-                style={{ border: "1px solid rgba(108,99,255,0.08)" }}
+                style={{ border: "1px solid rgba(211,175,55,0.08)" }}
                 whileHover={{
                   y: -8,
-                  borderColor: "rgba(108,99,255,0.3)",
-                  boxShadow: "0 20px 60px rgba(108,99,255,0.1)",
+                  borderColor: "rgba(211,175,55,0.3)",
+                  boxShadow: "0 20px 60px rgba(211,175,55,0.1)",
                 }}
               >
                 <div className="text-4xl mb-4">{service.icon}</div>

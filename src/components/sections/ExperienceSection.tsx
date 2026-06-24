@@ -100,8 +100,8 @@ export function ExperienceSection() {
                   <div
                     className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono mb-4`}
                     style={{
-                      backgroundColor: "rgba(108,99,255,0.1)",
-                      border: "1px solid rgba(108,99,255,0.2)",
+                      backgroundColor: "rgba(211,175,55,0.1)",
+                      border: "1px solid rgba(211,175,55,0.2)",
                       color: "var(--secondary-color)",
                     }}
                   >
@@ -131,19 +131,22 @@ export function ExperienceSection() {
                     {exp.location} · {exp.type}
                   </p>
 
-                  <div className="glass rounded-xl p-5">
+                  <div className="glass-card-gold rounded-xl p-6 text-left relative overflow-hidden">
+                    {/* Subtle backdrop overlay for premium touch */}
+                    <div className="absolute inset-0 bg-[var(--primary-color)]/10 -z-10" />
+                    
                     <ul className="space-y-3">
                       {exp.highlights.map((h, i) => (
                         <li
                           key={i}
-                          className="flex items-start gap-3 text-sm leading-relaxed"
-                          style={{ color: "rgba(232,230,255,0.75)" }}
+                          className="flex items-start gap-3 text-sm leading-relaxed transition-colors duration-300"
+                          style={{ color: "var(--third-color)", opacity: 0.85 }}
                         >
                           <span
-                            className="mt-1.5 w-1 h-1 rounded-full shrink-0"
-                            style={{ backgroundColor: "var(--secondary-color)" }}
+                            className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"
+                            style={{ backgroundColor: "var(--secondary-color)", boxShadow: "0 0 8px var(--secondary-color)" }}
                           />
-                          {h}
+                          <span>{h}</span>
                         </li>
                       ))}
                     </ul>

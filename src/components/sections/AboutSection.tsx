@@ -58,7 +58,7 @@ export function AboutSection() {
               <div className="relative">
                 {/* Code-like decoration */}
                 <div className="glass rounded-2xl p-6 font-mono text-sm leading-loose">
-                  <div style={{ color: "rgba(108,99,255,0.6)" }}>
+                  <div style={{ color: "rgba(211,175,55,0.6)" }}>
                     <span style={{ color: "var(--secondary-color)" }}>const</span>{" "}
                     <span style={{ color: "var(--third-color)" }}>developer</span> = {"{"}
                   </div>
@@ -76,7 +76,7 @@ export function AboutSection() {
                     <div>],</div>
                     <div><span className="opacity-60">available:</span> <span style={{ color: "#4ade80" }}>true</span></div>
                   </div>
-                  <div style={{ color: "rgba(108,99,255,0.6)" }}>{"}"}</div>
+                  <div style={{ color: "rgba(211,175,55,0.6)" }}>{"}"}</div>
                 </div>
 
                 {/* Decorative elements */}

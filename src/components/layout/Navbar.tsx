@@ -2,6 +2,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useState, useEffect } from "react";
 import { personalInfo } from "@/data/portfolio";
+import { Sun, Moon } from "lucide-react";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -15,8 +16,22 @@ const navLinks = [
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
   const { scrollY } = useScroll();
   const bgOpacity = useTransform(scrollY, [0, 100], [0, 1]);
+
+  useEffect(() => {
+    // Check initial theme class on html element
+    const isDark = document.documentElement.classList.contains("dark");
+    setTheme(isDark ? "dark" : "light");
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    localStorage.setItem("theme", nextTheme);
+    document.documentElement.classList.toggle("dark", nextTheme === "dark");
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,7 +79,7 @@ export function Navbar() {
                 style={{
                   color: activeSection === link.href.replace("#", "")
                     ? "var(--secondary-color)"
-                    : "rgba(232, 230, 255, 0.6)",
+                    : "var(--text-muted)",
                 }}
               >
                 {link.label}
@@ -80,47 +95,75 @@ export function Navbar() {
           ))}
         </ul>
 
-        <a
-          href={personalInfo.resumeUrl}
-          className="hidden md:flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium transition-all duration-300"
-          style={{
-            border: "1px solid var(--secondary-color)",
-            color: "var(--secondary-color)",
-          }}
-          onMouseEnter={(e) => {
-            (e.target as HTMLElement).style.backgroundColor = "var(--secondary-color)";
-            (e.target as HTMLElement).style.color = "var(--primary-color)";
-          }}
-          onMouseLeave={(e) => {
-            (e.target as HTMLElement).style.backgroundColor = "transparent";
-            (e.target as HTMLElement).style.color = "var(--secondary-color)";
-          }}
-        >
-          Resume
-        </a>
+        <div className="hidden md:flex items-center gap-4">
+          <button
+            onClick={toggleTheme}
+            className="w-10 h-10 rounded-full flex items-center justify-center glass border border-[var(--border-color)] transition-all duration-300"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? (
+              <Sun className="w-5 h-5 text-[var(--secondary-color)]" />
+            ) : (
+              <Moon className="w-5 h-5 text-[var(--secondary-color)]" />
+            )}
+          </button>
 
-        {/* Mobile menu button */}
-        <button
-          className="md:hidden flex flex-col gap-1.5 p-2"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          <motion.span
-            className="block w-6 h-px"
-            style={{ backgroundColor: "var(--third-color)" }}
-            animate={menuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-          />
-          <motion.span
-            className="block w-6 h-px"
-            style={{ backgroundColor: "var(--third-color)" }}
-            animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
-          />
-          <motion.span
-            className="block w-6 h-px"
-            style={{ backgroundColor: "var(--third-color)" }}
-            animate={menuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-          />
-        </button>
+          <a
+            href={personalInfo.resumeUrl}
+            className="flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium transition-all duration-300"
+            style={{
+              border: "1px solid var(--secondary-color)",
+              color: "var(--secondary-color)",
+            }}
+            onMouseEnter={(e) => {
+              (e.target as HTMLElement).style.backgroundColor = "var(--secondary-color)";
+              (e.target as HTMLElement).style.color = "var(--primary-color)";
+            }}
+            onMouseLeave={(e) => {
+              (e.target as HTMLElement).style.backgroundColor = "transparent";
+              (e.target as HTMLElement).style.color = "var(--secondary-color)";
+            }}
+          >
+            Resume
+          </a>
+        </div>
+
+        {/* Mobile menu & theme buttons */}
+        <div className="flex items-center gap-3 md:hidden">
+          <button
+            onClick={toggleTheme}
+            className="w-9 h-9 rounded-full flex items-center justify-center glass border border-[var(--border-color)]"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? (
+              <Sun className="w-4.5 h-4.5 text-[var(--secondary-color)]" />
+            ) : (
+              <Moon className="w-4.5 h-4.5 text-[var(--secondary-color)]" />
+            )}
+          </button>
+
+          <button
+            className="flex flex-col gap-1.5 p-2"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            <motion.span
+              className="block w-6 h-px"
+              style={{ backgroundColor: "var(--third-color)" }}
+              animate={menuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+            />
+            <motion.span
+              className="block w-6 h-px"
+              style={{ backgroundColor: "var(--third-color)" }}
+              animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
+            />
+            <motion.span
+              className="block w-6 h-px"
+              style={{ backgroundColor: "var(--third-color)" }}
+              animate={menuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+            />
+          </button>
+        </div>
       </nav>
 
       {/* Mobile menu */}

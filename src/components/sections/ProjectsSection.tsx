@@ -43,16 +43,16 @@ export function ProjectsSection() {
                 variants={fadeUp}
                 custom={i}
                 className="group cursor-pointer glass rounded-2xl overflow-hidden"
-                whileHover={{ y: -6, boxShadow: "0 20px 60px rgba(108,99,255,0.15)" }}
+                whileHover={{ y: -6, boxShadow: "0 20px 60px rgba(211,175,55,0.15)" }}
                 onClick={() => setSelected(project.id)}
-                style={{ border: "1px solid rgba(108,99,255,0.1)" }}
+                style={{ border: "1px solid rgba(211,175,55,0.1)" }}
               >
                 {/* Card header */}
                 <div
                   className="p-6 pb-4"
                   style={{
                     background: project.featured
-                      ? "linear-gradient(135deg, rgba(108,99,255,0.12) 0%, transparent 70%)"
+                      ? "linear-gradient(135deg, rgba(211,175,55,0.12) 0%, transparent 70%)"
                       : undefined,
                   }}
                 >
@@ -60,9 +60,9 @@ export function ProjectsSection() {
                     <span
                       className="text-xs font-mono px-3 py-1 rounded-full"
                       style={{
-                        backgroundColor: "rgba(108,99,255,0.15)",
+                        backgroundColor: "rgba(211,175,55,0.15)",
                         color: "var(--secondary-color)",
-                        border: "1px solid rgba(108,99,255,0.2)",
+                        border: "1px solid rgba(211,175,55,0.2)",
                       }}
                     >
                       {project.category}
@@ -102,11 +102,12 @@ export function ProjectsSection() {
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="text-xs px-2 py-1 rounded-md font-mono"
+                        className="text-xs px-2.5 py-1 rounded-md font-mono transition-all duration-300"
                         style={{
-                          backgroundColor: "rgba(108,99,255,0.08)",
-                          color: "rgba(232,230,255,0.6)",
-                          border: "1px solid rgba(108,99,255,0.1)",
+                          backgroundColor: "rgba(211,175,55,0.06)",
+                          color: "var(--third-color)",
+                          opacity: 0.8,
+                          border: "1px solid var(--border-color)",
                         }}
                       >
                         {tech}
@@ -140,7 +141,7 @@ export function ProjectsSection() {
             />
             <motion.div
               className="fixed inset-4 md:inset-10 z-50 overflow-y-auto rounded-2xl glass-strong"
-              style={{ border: "1px solid rgba(108,99,255,0.2)" }}
+              style={{ border: "1px solid rgba(211,175,55,0.2)" }}
               initial={{ opacity: 0, scale: 0.92, y: 40 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 40 }}
@@ -152,7 +153,7 @@ export function ProjectsSection() {
                     <span
                       className="text-xs font-mono px-3 py-1 rounded-full mb-4 inline-block"
                       style={{
-                        backgroundColor: "rgba(108,99,255,0.15)",
+                        backgroundColor: "rgba(211,175,55,0.15)",
                         color: "var(--secondary-color)",
                       }}
                     >
@@ -170,7 +171,7 @@ export function ProjectsSection() {
                   </div>
                   <button
                     onClick={() => setSelected(null)}
-                    className="w-10 h-10 rounded-full glass flex items-center justify-center text-lg"
+                    className="w-10 h-10 rounded-full glass flex items-center justify-center text-lg transition-all duration-300 hover:rotate-90 hover:scale-110 hover:border-[var(--secondary-color)]"
                     style={{ color: "var(--third-color)" }}
                   >
                     ×
@@ -197,9 +198,9 @@ export function ProjectsSection() {
                             key={t}
                             className="text-xs px-3 py-1 rounded-full font-mono"
                             style={{
-                              backgroundColor: "rgba(108,99,255,0.15)",
+                              backgroundColor: "rgba(211,175,55,0.15)",
                               color: "var(--secondary-color)",
-                              border: "1px solid rgba(108,99,255,0.2)",
+                              border: "1px solid rgba(211,175,55,0.2)",
                             }}
                           >
                             {t}
@@ -219,14 +220,14 @@ export function ProjectsSection() {
                         {selectedProject.responsibilities.map((r, i) => (
                           <li
                             key={i}
-                            className="flex items-start gap-2 text-sm"
-                            style={{ color: "rgba(232,230,255,0.75)" }}
+                            className="flex items-start gap-2 text-sm transition-colors duration-300"
+                            style={{ color: "var(--third-color)", opacity: 0.85 }}
                           >
                             <span
-                              className="mt-1.5 w-1 h-1 rounded-full shrink-0"
-                              style={{ backgroundColor: "var(--secondary-color)" }}
+                              className="mt-2 w-1.5 h-1.5 rounded-full shrink-0"
+                              style={{ backgroundColor: "var(--secondary-color)", boxShadow: "0 0 6px var(--secondary-color)" }}
                             />
-                            {r}
+                            <span>{r}</span>
                           </li>
                         ))}
                       </ul>
@@ -243,11 +244,11 @@ export function ProjectsSection() {
                         {selectedProject.outcomes.map((o, i) => (
                           <li
                             key={i}
-                            className="flex items-center gap-2 text-sm"
-                            style={{ color: "rgba(232,230,255,0.75)" }}
+                            className="flex items-start gap-2 text-sm transition-colors duration-300"
+                            style={{ color: "var(--third-color)", opacity: 0.85 }}
                           >
-                            <span style={{ color: "var(--secondary-color)" }}>✓</span>
-                            {o}
+                            <span className="text-[var(--secondary-color)] font-bold shrink-0">✓</span>
+                            <span>{o}</span>
                           </li>
                         ))}
                       </ul>
